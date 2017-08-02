@@ -1,13 +1,13 @@
 { "jsonGeese": [
     {
-        "name": "serverName",
+        "name": "dataAngela",
         "age": 2,
-        "type": "serverType"
+        "type": "producer"
     },
     {
-        "name": "Carla",
+        "name": "dataBara",
         "age": 4,
-        "type": "Canadian"
+        "type": "UX lead"
     }
     ]
 }

@@ -3,12 +3,12 @@ var app = express();
 var port = 4000;
 var geeseArray = [
     {
-        name: 'getCarl',
+        name: 'appCarl',
         age: 3,
         type: 'beetle'
     },
     {
-        name: 'getJulius',
+        name: 'appJulius',
         age: 4,
         type: 'canadian'
     }];

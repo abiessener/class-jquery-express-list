@@ -33,36 +33,49 @@ function clearGeeseTable(){
     $('#geeseTableBody').empty();
 }
 
-var serverGeese = [];
+var dataGeese = [];
 
-// build serverGeese array (which is used to build initial table, and later will be pushed back to the server when updated) from data.json
+// build dataGeese array (which is used to build initial table, and later will be pushed back to the server when updated) from data.json
 $.get('data/data.json', function(data, status){
     console.log("data:", data);
     console.log('status:', status);    
     console.log('jsonGeese', data.jsonGeese);
 
     for (var i = 0; i < data.jsonGeese.length; i++) {
-        serverGeese.push(data.jsonGeese[i]);
+        dataGeese.push(data.jsonGeese[i]);
     }
-    console.log('serverGeese:', serverGeese);
+    console.log('dataGeese:', dataGeese);
     
 });
 
-
-
+function getGeese(){
+    $.ajax({
+        method: 'GET',
+        url: '/geese',
+        success: function(response){ // response will be array of geese
+            var appGeese = response;
+            console.log('getGeese success', appGeese);
+            
+        }
+    })
+}
 
 $(document).ready(function(){
 
     // click handler for adding new Goose
     $('#addButton').on('click', function(){
-        addNewGoose(serverGeese);
+        addNewGoose(dataGeese);
     });
 
-    // build initial table from the serverGeese array, which is built from data.json
-    for (var i = 0; i < serverGeese.length; i++) {
-        var toAdd = serverGeese[i];
+    // build initial table from the dataGeese array, which is built from data.json
+    for (var i = 0; i < dataGeese.length; i++) {
+        var toAdd = dataGeese[i];
         addTableRow(toAdd);
     }
+
+    getGeese();
+    console.log('ajax');
+    
 
 
 

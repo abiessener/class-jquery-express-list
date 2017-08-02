@@ -1,0 +1,26 @@
+body {
+    background-color: #aaa
+}
+
+div {
+    border: 1px solid black;
+}
+
+#output {
+    width: 400px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    
+}
+
+thead {
+    
+}
+
+p {
+    margin: 3px auto;
+}

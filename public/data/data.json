@@ -1,0 +1,12 @@
+serverGeese = [
+    {
+        "name": "serverName",
+        "age": 2,
+        "type": "serverType"
+    },
+    {
+        "name": "Carla",
+        "age": 4,
+        "type": "Canadian"
+    }
+]

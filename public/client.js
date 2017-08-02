@@ -105,3 +105,17 @@ $(document).ready(function(){
 
 
 })
+
+
+
+/* 
+
+haha okay so this whole thing was a bit of a blind alley - in production you'd do it the good way:
+
+client -> server -> db -> server -> client
+
+instead of 
+
+client -> server (+client) -> db
+
+*/

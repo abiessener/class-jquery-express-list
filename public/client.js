@@ -55,9 +55,11 @@ function getGeese(){
         success: function(response){ // response will be array of geese
             var appGeese = response;
             console.log('getGeese success', appGeese);
-            
+            for (var i = 0; i < appGeese.length; i++) {
+                addTableRow(appGeese[i]);
+            }
         }
-    })
+    });
 }
 
 $(document).ready(function(){

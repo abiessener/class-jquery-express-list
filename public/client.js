@@ -20,7 +20,7 @@ function addTableRows (arr){
     
     for (var i = 0; i < arr.length; i++) {
         var toAdd = arr[i];
-        $('#geeseTableBody').append(
+        $('#geeseTableBody').prepend(
             '<tr>' +
                 '<td>' + toAdd.name + '</td>' +
                 '<td>' + toAdd.age + '</td>' +

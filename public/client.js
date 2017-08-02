@@ -50,8 +50,13 @@ function clearGeeseTable(){
 var serverGeese = [];
 
 $.get('data/data.json', function(data, status){
-    console.log(data);
-    console.log(status);    
+    console.log("data:", data);
+    console.log('status:', status);    
+    console.log('jsonGeese', data.jsonGeese);
+    for (var i = 0; i < data.jsonGeese.length; i++) {
+        serverGeese.push(data.jsonGeese[i]);
+    }
+    console.log('serverGeese:', serverGeese);
     
 });
 

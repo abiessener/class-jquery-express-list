@@ -1,6 +1,3 @@
-var express = require('express');
-var app = express();
-var port = 4000;
 var geeseArray = [
     {
         name: 'appCarl',
@@ -12,11 +9,26 @@ var geeseArray = [
         age: 4,
         type: 'canadian'
     }];
+    
+var express = require('express');
+var bodyParser = require('body-parser');
 
+var app = express();
+var port = 4000;
+
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 app.get('/geese', function(req, res){
     res.send(geeseArray);
+});
+
+app.post('/geese', function(req,res){
+    console.log(req.body);
+    
+    geeseArray.push(req.body);
+    res.sendStatus(201);
+    console.log('geeseArray',geeseArray);    
 });
 
 app.listen(port, function(){

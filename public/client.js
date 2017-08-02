@@ -1,21 +1,7 @@
 console.log('client.js sourced');
 
-var geese = [
-    {
-        name: 'Fred',
-        age: 5,
-        type: 'Beetlegoose'
-    },
-    {
-        name: 'Carla',
-        age: 4,
-        type: 'Canadian'
-    }
-];
-
+// adds the passed Goose object to the displayed table
 function addTableRow (goose){
-    console.log('addTableRows called');
-
     $('#geeseTableBody').prepend(
         '<tr>' +
             '<td>' + goose.name + '</td>' +
@@ -25,16 +11,15 @@ function addTableRow (goose){
     )
 }
 
-function addNewGoose (){
-    console.log('addNewGoose called');
-
+// adds the Goose defined by the input fields to the table AND to the passed array. DOES NOT USE THE PASSED ARRAY FOR INPUT
+function addNewGoose (arr){
     var gooseToAdd = {};
 
     gooseToAdd.name = $('#nameInput').val();
     gooseToAdd.age = $('#ageInput').val();
     gooseToAdd.type = $('#typeInput').val();
 
-    geese.push(gooseToAdd);
+    arr.push(gooseToAdd);
     addTableRow(gooseToAdd);
 
     //clear the input fields
@@ -43,16 +28,19 @@ function addNewGoose (){
     $('#typeInput').val('');
 }
 
+// this might not need to be its own function, but for now it does what's on the tin
 function clearGeeseTable(){
     $('#geeseTableBody').empty();
 }
 
 var serverGeese = [];
 
+// build serverGeese array (which is used to build initial table, and later will be pushed back to the server when updated) from data.json
 $.get('data/data.json', function(data, status){
     console.log("data:", data);
     console.log('status:', status);    
     console.log('jsonGeese', data.jsonGeese);
+
     for (var i = 0; i < data.jsonGeese.length; i++) {
         serverGeese.push(data.jsonGeese[i]);
     }
@@ -65,15 +53,16 @@ $.get('data/data.json', function(data, status){
 
 $(document).ready(function(){
 
-    $('#addButton').on('click', addNewGoose);
+    // click handler for adding new Goose
+    $('#addButton').on('click', function(){
+        addNewGoose(serverGeese);
+    });
 
-    // for (var i = 0; i < geese.length; i++) {
-    //     var toAdd = geese[i];
-    //     addTableRow(toAdd);
-    // }
-
-console.log(serverGeese);
-
+    // build initial table from the serverGeese array, which is built from data.json
+    for (var i = 0; i < serverGeese.length; i++) {
+        var toAdd = serverGeese[i];
+        addTableRow(toAdd);
+    }
 
 
 

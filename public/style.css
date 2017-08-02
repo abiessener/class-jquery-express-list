@@ -51,6 +51,9 @@ p {
 }
 
 #addButton {
-    margin-left: 40%;
     margin-top: 5px;
+}
+
+#buttonDiv {
+    text-align:center;
 }

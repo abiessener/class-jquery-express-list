@@ -51,8 +51,7 @@ var serverGeese = [];
 
 $.get('data/data.json', function(data, status){
     console.log(data);
-    console.log(status);
-    ;
+    console.log(status);    
     
 });
 

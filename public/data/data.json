@@ -1,4 +1,4 @@
-serverGeese = [
+{ "serverGeese": [
     {
         "name": "serverName",
         "age": 2,
@@ -9,4 +9,5 @@ serverGeese = [
         "age": 4,
         "type": "Canadian"
     }
-]
+    ]
+}
